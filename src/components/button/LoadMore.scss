@@ -1,0 +1,21 @@
+.button__load-more {
+  margin-bottom: 100px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  .btn__load-more {
+    width: 140px;
+    height: 31px;
+    border-radius: 30px;
+    background: none;
+    color: #fff;
+    border: 3px solid #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    &:hover {
+      background: #fff;
+      color: red;
+      transition: background 0.2s ease;
+    }
+  }
+}

@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@400;500;700&display=swap");
+
+.main__header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 128px;
+  z-index: 50;
+  .container {
+    .wrapper__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      .main__header__logo {
+        display: flex;
+        align-items: center;
+        > img {
+          width: 50px;
+          height: 50px;
+        }
+        > a {
+          font-size: 38px;
+          line-height: 60px;
+          font-weight: 600;
+          user-select: none;
+          &:hover {
+            color: red;
+          }
+        }
+      }
+      .main__header__menu {
+        ul {
+          display: flex;
+          li {
+            margin-left: 2rem;
+            position: relative;
+            &::after {
+              position: absolute;
+              left: 50%;
+              transform: translateX(-50%);
+              bottom: -5px;
+              content: "";
+              display: block;
+              width: 0;
+              height: 3px;
+              background-color: red;
+              transition: width 0.4s ease;
+            }
+            &:hover {
+              &::after {
+                width: 100%;
+              }
+            }
+            a {
+              font-size: 24px;
+              line-height: 36px;
+              font-weight: 700;
+              user-select: none;
+              &:hover {
+                color: red;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and(max-width: 875px) {
+  .main__header .container .wrapper__header {
+    flex-direction: column;
+  }
+  .background__header > h2 {
+    margin-top: 30px;
+  }
+  .main__header .container .wrapper__header .main__header__menu ul li {
+    margin-left: 0;
+    margin: 0 15px;
+  }
+}

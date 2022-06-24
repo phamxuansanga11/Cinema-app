@@ -1,0 +1,6 @@
+.caster__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  grid-gap: 10px;
+  gap: 10px;
+}
