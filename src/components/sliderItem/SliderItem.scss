@@ -27,14 +27,23 @@
         font-size: 70px;
         line-height: 70px;
         font-weight: 700;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: 0.3s ease;
       }
       .text__movie {
         margin-top: 48px;
         font-weight: 700;
         line-height: 24px;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: 0.3s ease;
       }
       .btn__movie {
         margin-top: 48px;
+        opacity: 0;
+        transform: translateY(-100px);
+        transition: 0.3s ease;
         .btn {
           border: 4px solid transparent;
           color: #fff;
@@ -47,11 +56,14 @@
         .btn__movie-watch__now {
           background-color: red;
           box-shadow: 0 0 7px 8px rgba(255, 0, 0, 0.3);
+          text-align: center;
           &:hover {
             box-shadow: 0 0 7px 15px rgba(255, 0, 0, 0.3);
           }
         }
         .btn__movie-watch__trailer {
+          cursor: pointer;
+          text-align: center;
           margin-left: 20px;
           background-color: transparent;
           border: 3px solid #fff;
@@ -69,6 +81,31 @@
       > img {
         width: 400px;
         border-radius: 30px;
+      }
+    }
+  }
+}
+
+.swiper-slide-active {
+  .movie__slider-item {
+    .wrapper__grid {
+      .name__movie {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.3s ease;
+        transition-delay: 0.2s;
+      }
+      .text__movie {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.3s ease;
+        transition-delay: 0.3s;
+      }
+      .btn__movie {
+        opacity: 1;
+        transform: translateY(0);
+        transition: 0.3s ease;
+        transition-delay: 0.5s;
       }
     }
   }

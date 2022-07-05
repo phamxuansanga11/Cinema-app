@@ -1,11 +1,13 @@
 import React from "react";
 import apiConfig from "../../api/apiConfig";
+import { Link } from "react-router-dom";
 import "./MovieCard.scss";
 
 function MovieCard({ data }) {
+  // console.log(data);
   return (
     <div className="movie__card">
-      <a href="/">
+      <Link to={`/movie/${data.id}`}>
         <div className="movie__card-img">
           <img src={`${apiConfig.originalImage(data.poster_path)}`} alt="" />
           <div className="overplay">
@@ -15,7 +17,7 @@ function MovieCard({ data }) {
           </div>
         </div>
         <h2 className="movie__card-name">{data.original_title}</h2>
-      </a>
+      </Link>
     </div>
   );
 }

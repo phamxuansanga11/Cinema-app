@@ -16,7 +16,7 @@ function MovieTrending({ title, type, getNewApi, link }) {
       setMovieCard(dataMovieCard);
     };
     fetchApiMovieTrend();
-  }, [getNewApi]);
+  }, [getNewApi, type]);
   console.log(movieCard);
   return (
     <div className="movie__trending container">

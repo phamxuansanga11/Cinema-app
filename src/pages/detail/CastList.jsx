@@ -3,7 +3,6 @@ import CastItem from "./CastItem";
 import "../../scss/CastList.scss";
 
 function CastList({ caster }) {
-  console.log(caster);
   return (
     <div className="caster">
       <h3>Casts</h3>

@@ -2,7 +2,6 @@ import React from "react";
 import apiConfig from "../../api/apiConfig";
 
 function CastItem({ data }) {
-  console.log(data);
   return (
     <div className="caster__content-item">
       <img src={apiConfig.w500Image(data?.profile_path)} alt="" />

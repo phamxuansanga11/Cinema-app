@@ -6,6 +6,12 @@
   width: 100%;
   height: 128px;
   z-index: 50;
+  transition: 0.3s;
+  &.active {
+    background-color: #000;
+    height: 100px;
+    transition: 0.3s;
+  }
   .container {
     .wrapper__header {
       display: flex;
@@ -61,6 +67,14 @@
                 color: red;
               }
             }
+            &.active {
+              a {
+                color: red;
+              }
+              &::after {
+                width: 100%;
+              }
+            }
           }
         }
       }
@@ -71,6 +85,7 @@
 @media screen and(max-width: 875px) {
   .main__header .container .wrapper__header {
     flex-direction: column;
+    justify-content: initial;
   }
   .background__header > h2 {
     margin-top: 30px;
@@ -78,5 +93,8 @@
   .main__header .container .wrapper__header .main__header__menu ul li {
     margin-left: 0;
     margin: 0 15px;
+  }
+  .main__header .container .wrapper__header .main__header__menu ul li a {
+    line-height: 29px;
   }
 }

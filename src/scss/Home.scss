@@ -1,4 +1,107 @@
 .home__page {
   .movie__slider {
+    // margin-bottom: 30px;
   }
+}
+
+@media screen and(max-width: 993px) {
+  .movie__slider-item {
+    padding: 9rem 0;
+    width: 100%;
+    height: 453px;
+    position: relative;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .movie__slider-item .wrapper__grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-right {
+    display: none;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .name__movie {
+    font-size: 50px;
+  }
+}
+
+@media screen and(max-width: 576px) {
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .btn__movie {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    .btn__movie-watch__trailer {
+      margin-left: 0;
+      margin-top: 20px;
+    }
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .name__movie {
+    line-height: 60px;
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .text__movie {
+    margin-top: 30px;
+  }
+}
+
+@media screen and(max-width: 506px) {
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .btn__movie {
+    width: 100%;
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .name__movie {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  .main__header .container .wrapper__header .main__header__logo > a {
+    font-size: 32px;
+  }
+  .main__header .container .wrapper__header .main__header__menu ul li a {
+    font-size: 17px;
+  }
+  // .movie__trending .movie__trending-title > h2 {
+  //   margin-bottom: 10px;
+  // }
+  .movie__trending .movie__trending-title {
+    flex-direction: column;
+  }
+}
+
+@media screen and(max-width: 376px) {
+  .movie__slider-item {
+    height: 460px;
+  }
+  .main__header .container .wrapper__header .main__header__logo > a {
+    font-size: 27px;
+  }
+  .main__header .container .wrapper__header .main__header__menu ul li a {
+    font-size: 16px;
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .name__movie {
+    font-size: 35px;
+  }
+  .movie__slider-item .wrapper__grid .wrapper__grid-left .text__movie {
+    margin-top: 22px;
+    font-size: 14px;
+  }
+}
+.ReactModal__Overlay {
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+.btn__close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.iframe__trailer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //   width: 600px;
+  //   height: 500px;
 }
