@@ -17,7 +17,6 @@ function Layout(props) {
       <div className="content__layout">
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/Cinema-app" element={<Home />}></Route>
           <Route path="/movies" element={<Movie />}></Route>
           <Route path="/tv" element={<TvSeries />}></Route>
           <Route path="/:category/:id" element={<Detail />}></Route>
