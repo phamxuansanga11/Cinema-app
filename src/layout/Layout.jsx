@@ -20,7 +20,6 @@ function Layout(props) {
           <Route path="/movies" element={<Movie />}></Route>
           <Route path="/tv" element={<TvSeries />}></Route>
           <Route path="/:category/:id" element={<Detail />}></Route>
-          {/* <Route path="/detail" element={<Detail />}></Route> */}
         </Routes>
       </div>
       <Footer />

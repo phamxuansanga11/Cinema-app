@@ -9,22 +9,22 @@
       line-height: 36px;
       font-weight: 700;
     }
-    > a {
-      .btn__view-more {
-        cursor: pointer;
-        border: 3px solid #fff;
-        background-color: transparent;
-        color: #fff;
-        box-shadow: unset;
-        transition: color 0.3s ease, background-color 0.3s ease;
-        border-width: 2px;
-        padding: 0.25rem 1.5rem;
-        font-size: 1rem;
-        border-radius: 30px;
-        &:hover {
-          color: red;
-          background-color: #fff;
-        }
+    .btn__view-more {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      border: 3px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      box-shadow: unset;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      border-width: 2px;
+      padding: 0.25rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      &:hover {
+        color: red;
+        background-color: #fff;
       }
     }
   }

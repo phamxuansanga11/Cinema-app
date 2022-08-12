@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import tmdbApi from "../api/tmdbApi";
 import { movieType } from "../api/tmdbApi";
@@ -8,29 +7,75 @@ import "swiper/css";
 import "../scss/Home.scss";
 import MovieTrending from "../components/movieType/MovieTrending";
 import Modal from "react-modal";
+import Loading from "../components/loading/Loading";
 
 function Home(props) {
   const [slider, setSlider] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [movieID, setMovieID] = useState(null);
   const [movieDetail, setMovieDetail] = useState();
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchApiSlider = async () => {
+  const fetchApiSlider = async () => {
+    try {
+      setLoading(true);
       const sliderList = await tmdbApi.getMoviesList(movieType.popular, {
         params: {},
       });
+      const dataMovieTrending = await tmdbApi.getMoviesList(movieType.popular, {
+        params: {},
+      });
+      setMovieTrending(dataMovieTrending);
+      //
+      const dataMovieTopRate = await tmdbApi.getMoviesList(
+        movieType.top_rated,
+        {
+          params: {},
+        }
+      );
+      setMovieTopRate(dataMovieTopRate);
+      //
+      const dataTVPopular = await tmdbApi.getTvList(movieType.popular, {
+        params: {},
+      });
+      setTVPopular(dataTVPopular);
+      //
+      const dataTVTopRate = await tmdbApi.getTvList(movieType.top_rated, {
+        params: {},
+      });
+      setTVTopRate(dataTVTopRate);
       setSlider(sliderList);
-    };
+      setLoading(false);
+    } catch (error) {
+      console.log("API fetchApiSlider fail", error);
+    }
+  };
+
+  const getVideos = async (category, id) => {
+    try {
+      setLoading(true);
+      const response = await tmdbApi.getVideos(category, id);
+      setMovieDetail(response);
+      setLoading(false);
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.log("API getVideos fail..!");
+    }
+  };
+
+  //Movie Trending
+  const [movieTrending, setMovieTrending] = useState([]);
+  const [movieTopRate, setMovieTopRate] = useState([]);
+  const [TVPopular, setTVPopular] = useState([]);
+  const [TVTopRate, setTVTopRate] = useState([]);
+
+  const ref = useRef(null);
+  console.log("re-render", ref.current + 1);
+
+  useEffect(() => {
     fetchApiSlider();
     window.scrollTo(0, 0);
   }, []);
-
-  const getVideos = async (category, id) => {
-    const response = await tmdbApi.getVideos(category, id, { params: {} });
-    setMovieDetail(response);
-    window.scrollTo(0, 0);
-  };
 
   useEffect(() => {
     if (movieID !== null) {
@@ -38,7 +83,6 @@ function Home(props) {
     }
   }, [movieID]);
 
-  console.log(slider);
   function openModal(data) {
     setMovieID(data?.id);
     setIsOpen(true);
@@ -46,11 +90,13 @@ function Home(props) {
   function closeModal() {
     setIsOpen(false);
   }
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       <div className="home__page">
         <div className="movie__slider">
-          <Swiper>
+          <Swiper scrollbar={{ grabCursor: true }}>
             {slider.map((data, idx) => {
               return (
                 <SwiperSlide key={idx}>
@@ -65,32 +111,21 @@ function Home(props) {
         </div>
         <MovieTrending
           title="Trending Movies"
-          getNewApi={tmdbApi.getMoviesList}
-          type={movieType.popular}
+          data={movieTrending}
           link="/movies"
         />
         <MovieTrending
           title="Top Rated Movies"
-          getNewApi={tmdbApi.getMoviesList}
-          type={movieType.top_rated}
+          data={movieTopRate}
           link="/movies"
         />
-        <MovieTrending
-          title="Trending TV"
-          getNewApi={tmdbApi.getTvList}
-          type={movieType.popular}
-          link="/tv"
-        />
-        <MovieTrending
-          title="Top Rated TV"
-          getNewApi={tmdbApi.getTvList}
-          type={movieType.top_rated}
-          link="/tv"
-        />
+        <MovieTrending title="Trending TV" data={TVPopular} link="/tv" />
+        <MovieTrending title="Top Rated TV" data={TVTopRate} link="/tv" />
       </div>
       <div className="new">
         <Modal
           isOpen={modalIsOpen}
+          ariaHideApp={false}
           onRequestClose={closeModal}
           contentLabel="Example Modal"
         >
